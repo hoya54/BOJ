@@ -7,6 +7,7 @@ N = int(input())
 n1 = 0
 n2 = 1
 r = 0
+
 for i in range(2, N+1):
 
     r = n1+n2
