@@ -5,30 +5,39 @@ from itertools import combinations
 input = sys.stdin.readline
 
 
-N = int(input())
-a = list(map(int, input().split()))
+x = int(input())
 
-M = int(input())
-b = list(map(int, input().split()))
+d = deque()
 
-a.sort()
+if x == 1:
+    print(0)
+    exit()
 
-def binary_search(lst, start, end, target):
-    if start > end:
-        return 0
+if x%3 == 0:
+    d.append(x//3)
+if x%2 == 0:
+    d.append(x//2)
+d.append(x-1)
+
+depth = 0
+
+while d:
+    length = len(d)
+
+    for i in range(length):
+        t = d.popleft()
+        if t == 1:
+            d.clear()
+            break
+        
+        if t%3 == 0:
+            d.append(t//3)
+        if t%2 == 0:
+            d.append(t//2)
+        d.append(t-1)
+        #print(d)
+
+    depth += 1
+
+print(depth)
     
-    mid = (start+end)//2
-
-    if lst[mid] == target:
-        return 1
-    elif lst[mid] > target:
-        end = mid-1
-    else:
-        start = mid+1
-
-    return binary_search(lst, start, end, target)
-
-
-for i in b:
-    r = binary_search(a, 0, len(a)-1, i)
-    print(r, end=" ")
