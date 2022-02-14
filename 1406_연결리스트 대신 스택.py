@@ -17,13 +17,11 @@ for i in range(N):
     lst = list(map(str, input().split()))
 
     if lst[0] == 'L':
-        if len(l) == 0:
-            continue
-        r.appendleft(l.pop())
+        if len(l) != 0:
+            r.appendleft(l.pop())
     elif lst[0] == 'D':
-        if len(r) == 0:
-            continue
-        l.append(r.popleft())
+        if len(r) != 0:
+            l.append(r.popleft())
     elif lst[0] == 'B':
         if len(l) != 0:
             l.pop()
