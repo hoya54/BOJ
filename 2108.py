@@ -18,7 +18,8 @@ for i in range(0, N):
     count[a+4000] += 1
 
 lst.sort()
-print("%.0f" % (summ/N))
+
+print(round(summ/N))
 print("%d" % lst[int(N/2)])
 
 M = max(count)
