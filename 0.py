@@ -1,43 +1,20 @@
 import sys
-from collections import deque
-from itertools import combinations
+import itertools 
 
 input = sys.stdin.readline
 
+N, M = map(int, input().split())
 
-x = int(input())
+lst = list(map(int, input().split()))
+lst.sort()
 
-d = deque()
+temp = itertools.combinations_with_replacement(lst, M)
 
-if x == 1:
-    print(0)
-    exit()
+#temp = set(temp)
+temp = list(temp)
+print(temp)
+temp.sort()
 
-if x%3 == 0:
-    d.append(x//3)
-if x%2 == 0:
-    d.append(x//2)
-d.append(x-1)
 
-depth = 0
-
-while d:
-    length = len(d)
-
-    for i in range(length):
-        t = d.popleft()
-        if t == 1:
-            d.clear()
-            break
-        
-        if t%3 == 0:
-            d.append(t//3)
-        if t%2 == 0:
-            d.append(t//2)
-        d.append(t-1)
-        #print(d)
-
-    depth += 1
-
-print(depth)
-    
+for i in temp:
+    print(' '.join(map(str, i)))
