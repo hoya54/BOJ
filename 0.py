@@ -1,20 +1,12 @@
 import sys
 import itertools 
 
-input = sys.stdin.readline
+a = 10
+b = 3
 
-N, M = map(int, input().split())
+a = a * b
+b = a / b
+a = a / b
 
-lst = list(map(int, input().split()))
-lst.sort()
-
-temp = itertools.combinations_with_replacement(lst, M)
-
-#temp = set(temp)
-temp = list(temp)
-print(temp)
-temp.sort()
-
-
-for i in temp:
-    print(' '.join(map(str, i)))
+print(a)
+print(b)
