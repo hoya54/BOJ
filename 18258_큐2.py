@@ -6,7 +6,7 @@ n = int(input())
 
 d = deque()
 
-for i in range(n):
+for i in range(n): 
     lst = input().split()
 
     print(type(lst))
