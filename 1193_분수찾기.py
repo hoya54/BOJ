@@ -1,36 +1,36 @@
 import sys
 
-
 input = sys.stdin.readline
+
+line = 1
+max_num = 0
 
 n = int(input())
 
-l = 1
-r = 1
+while n > max_num:
+    max_num += line
+    line += 1
+ 
+remain = max_num - n
 
-d = 1
+line -= 1
 
-depth = 1
-remain = 0
+l = line
+r = line
 
-for i in range(n-1):
-    if remain == 0:
-        if d == 1:
-            r += 1
-        else:
-            l += 1
-        remain = depth
-        depth += 1
-        d = (d+1)%2
-    else:
-        if d == 1:
-            l -= 1
-            r += 1
-        else:
-            l += 1
-            r -= 1
-        remain -= 1
+if line%2 == 0:
+    l = line
+    r = 1
 
-print(l, end='')
-print('/', end='')
-print(r, end='')
+    l -= remain
+    r += remain
+else:
+    l = 1
+    r = line
+
+    l += remain
+    r -= remain
+
+
+print(l, end='/')
+print(r)
